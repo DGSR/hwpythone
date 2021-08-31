@@ -2,6 +2,12 @@ from typing import Sequence
 
 
 def check_fibonacci(data: Sequence[int]) -> bool:
+    """
+    Function checks if sequence is a Fibonacci sequence
+    First, function reaches to first value
+    then checks if values are the same as generated
+    Special checks for size of sequence and 1, 1
+    """
     if len(data) == 0:
         return False
     temp = 0

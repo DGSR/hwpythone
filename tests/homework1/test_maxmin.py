@@ -1,5 +1,5 @@
-from homework1.maxmin import find_maximum_and_minimum as find_max_min
 import os.path as oss
+from homework1.maxmin import find_maximum_and_minimum as find_max_min
 
 
 def test_find_max_min():
