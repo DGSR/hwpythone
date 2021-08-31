@@ -2,6 +2,10 @@ from typing import List
 
 
 def find_maximal_subarray_sum(nums: List[int], k: int) -> int:
+    """
+    iterate through list and check using slicing
+    if length is less than k then just sum of list
+    """
     temp = 0
     if len(nums) <= k:
         return sum(nums)
