@@ -3,8 +3,8 @@ from homework1.maxmin import max_min
 
 
 def test_find_max_min():
-    assert find_max_min(".\\tests\\homework1\\2.txt") == (15, 1)
-    assert find_max_min(".\\tests\\homework1\\3.txt") == (10000, 1096)
+    assert find_max_min("tests/homework1/2.txt") == (15, 1)
+    assert find_max_min("tests/homework1/3.txt") == (10000, 1096)
 
 
 def test_max_min():
