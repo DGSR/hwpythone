@@ -1,4 +1,4 @@
-from typing import Tuple, List
+from typing import List, Tuple
 
 
 def max_min(nums: List[str]) -> Tuple[int, int]:
