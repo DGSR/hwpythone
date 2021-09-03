@@ -1,14 +1,22 @@
 from typing import List
 
 
-def check_zeros(x):
+def check_zeros(nums: List[int]) -> int:
     """
     all ellements which are 0 are returned in list expression
     function returns length of that list expression
     """
-    return len([i for i in x if i == 0])
+    return len([i for i in nums if i == 0])
 
 
-def check_sum_of_four(a: List[int], b: List[int],
-                      c: List[int], d: List[int]) -> int:
-    return check_zeros(a) * check_zeros(b) * check_zeros(c) * check_zeros(d)
+def check_sum_of_four(*nums: List[int]) -> int:
+    """
+    function receives any number of lists
+    and returns number of combinations i + j + k + l + ...
+    where sum of any element in list is zero
+    A[i] + B[j] + C[k] + D[l] + ... = 0
+    """
+    res = 1
+    for i in nums:
+        res *= check_zeros(i)
+    return res
