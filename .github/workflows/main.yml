@@ -17,6 +17,6 @@ jobs:
         run: |
           pip install flake8 isort pytest
           ls -la
-          flake8 .
+          flake8 --exclude=*.txt
           isort --check .
           py.test tests
