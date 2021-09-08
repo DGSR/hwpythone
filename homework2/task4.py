@@ -2,4 +2,14 @@ from typing import Callable
 
 
 def cache(func: Callable) -> Callable:
-    return func
+    """
+    returns function, which caches all calls
+    """
+    memory = {}
+
+    def wrapped(*args):
+        if args not in memory:
+            print("hey")
+            memory[args] = func(*args)
+        return memory[args]
+    return wrapped

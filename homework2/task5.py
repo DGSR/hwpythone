@@ -8,9 +8,8 @@ def custom_range(iterable: Any, start: Any = None,
     and iterated with given step (By default = 1)
     """
     res = list(iterable)
-    if start is None and stop is None:
-        return res[::step]
-    elif start is not None and stop is None:
-        return res[:res.index(start):step]
-    else:
-        return res[res.index(start):res.index(stop):step]
+    if start not in res:
+        start, stop = res[0], res[len]
+    if stop not in res:
+        start, stop = res[0], start
+    return res[res.index(start):res.index(stop):step]

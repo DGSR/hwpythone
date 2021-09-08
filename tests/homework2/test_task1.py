@@ -11,18 +11,21 @@ def test_has_unique_chars():
 
 
 def test_get_longest_diverse_words():
-    res0 = ['»unsichtbare', 'verständlich', 'kalyptischen', 'Schlagworte',
-            'Schilderung', 'Märchenwald', 'Moralischen',
-            'Landstriche', 'Furchtlosen', 'Beschwörung']
-    res1 = ['sich', 'nicht', 'machen', 'hinter',
-            'hier«', 'gefaßt', 'chen',
-            'ausführen', 'auch', 'Pfade']
-    res2 = ['string', 'sniper', 'phone', 'keyboard',
-            'fortune', 'false', 'absurdity',
-            'absent', 'abjection', 'abduction']
-    assert get_longest_diverse_words("tests/homework2/data.txt") == res0
-    assert get_longest_diverse_words("tests/homework2/data1.txt") == res1
-    assert get_longest_diverse_words("tests/homework2/data2.txt") == res2
+    assert get_longest_diverse_words("tests/homework2/data.txt") == [
+            'kalyptischen', 'verständlich', '»unsichtbare', 'Beschwörung',
+            'Furchtlosen', 'Landstriche', 'Moralischen',
+            'Märchenwald', 'Schilderung', 'Schlagworte'
+            ]
+    assert get_longest_diverse_words("tests/homework2/data1.txt") == [
+            'ausführen', 'gefaßt', 'hinter', 'machen',
+            'Pfade', 'hier«', 'nicht',
+            'auch', 'chen', 'sich'
+            ]
+    assert get_longest_diverse_words("tests/homework2/data2.txt") == [
+            'abduction', 'abjection', 'absurdity', 'keyboard',
+            'fortune', 'absent', 'sniper',
+            'string', 'false', 'phone'
+            ]
 
 
 def test_get_rarest_char():

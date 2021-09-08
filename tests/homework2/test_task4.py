@@ -10,6 +10,7 @@ def test_cache():
     some = 100, 200
     val_1 = cache_func(*some)
     val_2 = cache_func(*some)
-    val_3 = cache_func(2, 3)
+    val_3 = cache_func(*some)
+
     assert val_1 == val_2
-    assert val_3 == 64
+    assert val_1 == val_3

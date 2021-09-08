@@ -22,20 +22,10 @@ def get_longest_diverse_words(file_path: str) -> List[str]:
     returns 10 largest words with unique letters only in given file
     """
     file = open_bom_file(file_path)
-    unique_words = []
     words = set(file.split())
-    while(len(words) > 0):
-        longest = max(words)
-        words.remove(longest)
-        longest = longest.strip(string.punctuation)
-
-        if not has_unique_chars(longest):
-            continue
-        else:
-            unique_words.append(longest)
-        if len(unique_words) > 10:
-            unique_words.remove(min(unique_words, key=len))
-    return unique_words
+    words = [i.strip(string.punctuation) for i in words if has_unique_chars(i)]
+    words.sort()
+    return sorted(words, reverse=True, key=len)[:10]
 
 
 def get_rarest_char(file_path: str) -> str:
@@ -44,12 +34,9 @@ def get_rarest_char(file_path: str) -> str:
     """
     file = open_bom_file(file_path)
     char_dict = {}
-    for line in file:
-        for char in line:
-            if char in char_dict:
-                char_dict[char] += 1
-            else:
-                char_dict[char] = 1
+    chars_in_file = [c for x in file for c in x]
+    for char in chars_in_file:
+        char_dict[char] = char_dict.get(char, 0) + 1
     return min(char_dict, key=char_dict.get)
 
 
@@ -58,12 +45,7 @@ def count_punctuation_chars(file_path: str) -> int:
     returns number of punctuatuin chars in given file
     """
     file = open_bom_file(file_path)
-    counter = 0
-    for line in file:
-        for char in line:
-            if char in string.punctuation:
-                counter += 1
-    return counter
+    return len([chr for x in file for chr in x if chr in string.punctuation])
 
 
 def count_non_ascii_chars(file_path: str) -> int:
@@ -71,12 +53,7 @@ def count_non_ascii_chars(file_path: str) -> int:
     returns number of non ascii chars in given file
     """
     file = open_bom_file(file_path)
-    counter = 0
-    for line in file:
-        for char in line:
-            if not char.isascii():
-                counter += 1
-    return counter
+    return len([chr for x in file for chr in x if not chr.isascii()])
 
 
 def get_most_common_non_ascii_char(file_path: str) -> str:
@@ -85,15 +62,7 @@ def get_most_common_non_ascii_char(file_path: str) -> str:
     """
     file = open_bom_file(file_path)
     char_dict = {}
-    for line in file:
-        for char in line:
-            if char.isascii():
-                continue
-            if char in char_dict:
-                char_dict[char] += 1
-            else:
-                char_dict[char] = 1
-    if char_dict:
-        return max(char_dict, key=char_dict.get)
-    else:
-        return None
+    chars_in_file = [chr for x in file for chr in x if not chr.isascii()]
+    for chr in chars_in_file:
+        char_dict[chr] = char_dict.get(chr, 0) + 1
+    return max(char_dict, key=char_dict.get) if char_dict else None
