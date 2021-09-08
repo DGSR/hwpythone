@@ -9,7 +9,6 @@ def cache(func: Callable) -> Callable:
 
     def wrapped(*args):
         if args not in memory:
-            print("hey")
             memory[args] = func(*args)
         return memory[args]
     return wrapped
