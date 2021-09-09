@@ -9,7 +9,7 @@ def custom_range(iterable: Any, start: Any = None,
     """
     res = list(iterable)
     if start not in res:
-        start, stop = res[0], res[len]
+        return res[::step]
     if stop not in res:
         start, stop = res[0], start
     return res[res.index(start):res.index(stop):step]
