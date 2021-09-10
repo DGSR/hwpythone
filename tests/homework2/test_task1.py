@@ -1,5 +1,5 @@
 from homework2.task1 import (count_non_ascii_chars, count_punctuation_chars,
-                             get_longest_diverse_words,
+                             get_first_n_elements, get_longest_diverse_words,
                              get_most_common_non_ascii_char, get_rarest_char,
                              has_unique_chars)
 
@@ -8,6 +8,11 @@ def test_has_unique_chars():
     assert has_unique_chars("hello") is False
     assert has_unique_chars("Dead") is False
     assert has_unique_chars("abduction") is True
+
+
+def test_get_first_n_elements():
+    assert get_first_n_elements([1, 2, 3, 4, 5], 3) == [1, 2, 3]
+    assert get_first_n_elements([6, 4, 1, 7, 2, 9], 4) == [6, 4, 1, 7]
 
 
 def test_get_longest_diverse_words():

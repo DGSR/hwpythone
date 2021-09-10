@@ -1,8 +1,9 @@
-from typing import Any, List
+from string import ascii_lowercase
+from typing import List
 
 
-def custom_range(iterable: Any, start: Any = None,
-                 stop: Any = None, step: int = 1) -> List[Any]:
+def custom_range(iterable: str = ascii_lowercase, start: str = None,
+                 stop: str = None, step: int = 1) -> List[str]:
     """
     returns iterable object with set start and end (By default not)
     and iterated with given step (By default = 1)
