@@ -1,4 +1,5 @@
 import pytest
+
 from homework3.task2 import sum_slow_calculation
 
 
