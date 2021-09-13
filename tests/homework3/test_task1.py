@@ -1,4 +1,4 @@
-from mock import patch
+from unittest.mock import patch
 
 from homework3.task1 import cache
 
