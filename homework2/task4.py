@@ -3,7 +3,8 @@ from typing import Callable
 
 def cache(func: Callable) -> Callable:
     """
-    returns function, which caches all calls
+    returns call of function first time
+    after first time returns cached call
     """
     memory = {}
 

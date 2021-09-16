@@ -1,12 +1,12 @@
 from string import punctuation
-from typing import Any, List
+from typing import List
 
 
 def open_bom_file(file_path: str) -> List[str]:
     """
     returns decoded contents with bom symbols replaced by unicode character
     """
-    with open(file_path, "r", encoding='unicode_escape') as file:
+    with open(file_path, 'r', encoding='unicode_escape') as file:
         return file.read()
 
 
@@ -17,31 +17,15 @@ def has_unique_chars(word: str) -> bool:
     return len(set(word.lower())) == len(word.lower())
 
 
-def get_first_n_elements(array: List[Any], number: int) -> List[Any]:
-    """
-    returns first number of elements in list
-    if number is more than length, returns list
-    """
-    if len(array) <= number:
-        return array
-
-    res = []
-    for i in array:
-        if len(res) >= number:
-            break
-        res.append(i)
-    return res
-
-
 def get_longest_diverse_words(file_path: str) -> List[str]:
     """
     returns 10 largest words with unique letters only in given file
     """
     file = open_bom_file(file_path)
     words = set(file.split())
-    res = [i.strip(punctuation) for i in words if has_unique_chars(i)]
+    res = [word.strip(punctuation) for word in words if has_unique_chars(word)]
     res = sorted(sorted(res), reverse=True, key=len)
-    return get_first_n_elements(res, 10)
+    return res[:10]
 
 
 def get_rarest_char(file_path: str) -> str:

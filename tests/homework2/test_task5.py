@@ -15,10 +15,10 @@ def test_custom_range():
     assert custom_range(string.ascii_lowercase, 'p', 'g', -2) == [
                                           'p', 'n', 'l', 'j', 'h']
     assert custom_range([
-                        "H", "e", "l", "o", "d",
-                        "a", "r", "k", "n", "s",
-                        "m", "y", "f", "i"
+                        'H', 'e', 'l', 'o', 'd',
+                        'a', 'r', 'k', 'n', 's',
+                        'm', 'y', 'f', 'i'
                         ], 'e', 'y') == [
-                                            "e", "l", "o", "d", "a",
-                                            "r", "k", "n", "s", "m"
+                                            'e', 'l', 'o', 'd', 'a',
+                                            'r', 'k', 'n', 's', 'm'
                                             ]
