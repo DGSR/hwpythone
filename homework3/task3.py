@@ -1,25 +1,31 @@
+from functools import partial
+from typing import Any, Dict, List
+
+
 class Filter:
     """
         Helper filter class. Accepts a list of single-argument
         functions that return True if object in list conforms to some criteria
     """
-    def __init__(self, *functions):
+    def __init__(self, *functions: List[Any]) -> None:
         self.functions = functions
 
-    def apply(self, data):
+    def apply(self, data: List[Any]) -> bool:
         return [
             item for item in data
-            if all(i(item) for i in self.functions)
+            if all(func(item) for func in self.functions)
         ]
 
 
-def make_filter(**keywords):
+def keyword_filter_func(val: List[Any], key: List[Any], value: Any) -> bool:
+    return val[key] == value
+
+
+def make_filter(**keywords: Dict) -> Filter:
     """
         Generate filter object for specified keywords
     """
     filter_funcs = []
     for key, value in keywords.items():
-        def keyword_filter_func(val, key=key, value=value):
-            return val[key] == value
-        filter_funcs.append(keyword_filter_func)
+        filter_funcs.append(partial(keyword_filter_func, key=key, value=value))
     return Filter(*filter_funcs)
