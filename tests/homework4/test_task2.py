@@ -1,6 +1,7 @@
 from unittest.mock import Mock, patch
 
 import pytest
+import requests  # noqa: F401
 
 from homework4.task2 import count_dots_on_i
 
