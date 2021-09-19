@@ -20,3 +20,4 @@ jobs:
           flake8 .
           isort --check .
           py.test tests
+          py.test homework4 --doctest-modules
