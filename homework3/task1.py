@@ -11,7 +11,7 @@ def cache(times: int) -> Callable:
         memory = {'calls': times, 'data': None}
 
         def inner(*args):
-            if memory['data'] is None or memory['calls'] == 0:
+            if memory['data'] is None or memory['calls'] < 1:
                 memory['data'] = func(*args)
             else:
                 memory['calls'] -= 1
