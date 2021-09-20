@@ -10,7 +10,7 @@ def f():
     return input('? ')
 
 
-@cache(times=9999)
+@cache(times=99999)
 def f1(a, b):
     return (a ** b) ** 2
 
@@ -18,14 +18,18 @@ def f1(a, b):
 @pytest.mark.timeout(1)
 def test_cache_heavy():
     result = 1000 ** 4000
-    for test_case in [(1000, 2000)] * 10000:
+    for test_case in [(1000, 2000)] * 10**5:
         assert f1(*test_case) == result
 
 
+@pytest.mark.timeout(1)
 def test_cache_light():
-    result = 2 ** 6
-    for test_case in [(2, 3)] * 10000:
-        assert f1(*test_case) == result
+    res = 2 ** 6
+    res0 = 3 ** 8
+    for test_case in [(2, 3)] * 10**5:
+        assert f1(*test_case) == res
+    for test_case in [(3, 4)] * 10**5:
+        assert f1(*test_case) == res0
 
 
 def test_cache_input():
