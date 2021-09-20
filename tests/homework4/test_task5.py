@@ -9,5 +9,5 @@ def test_get_value_for_fizzbuzz():
 
 
 def test_fizzbuzz():
-    assert list(fizzbuzz(5)) == ['1', '2', 'fizz', '4', 'buzz']
-    assert list(fizzbuzz(15))[10:] == ['11', 'fizz', '13', '14', 'fizzbuzz']
+    assert list(fizzbuzz(5)) == ["1", "2", "fizz", "4", "buzz"]
+    assert list(fizzbuzz(15))[10:] == ["11", "fizz", "13", "14", "fizzbuzz"]

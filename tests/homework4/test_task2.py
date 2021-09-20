@@ -9,8 +9,8 @@ from homework4.task2 import count_dots_on_i
 def test_count_dots_on_i_positive():
     test_value = Mock()
     test_value.content = ("i" * 59).encode()
-    with patch('requests.get', return_value=test_value):
-        assert count_dots_on_i("https://example.com/") == 59
+    with patch("requests.get", return_value=test_value):
+        assert count_dots_on_i("https://example.com/", "i") == 59
 
 
 def test_count_dots_on_i_negative():
