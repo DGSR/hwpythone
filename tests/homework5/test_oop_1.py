@@ -3,7 +3,7 @@ from datetime import timedelta
 from homework5.oop_1 import Student, Teacher
 
 
-def test_Combined(capsys):
+def test_combined(capsys):
     teacher = Teacher('Daniil', 'Shadrin')
     student = Student('Roman', 'Petrov')
     assert teacher.last_name == 'Daniil'
@@ -20,4 +20,4 @@ def test_Combined(capsys):
     student.do_homework(oop_homework)
     student.do_homework(expired_homework)
     captured = capsys.readouterr()
-    assert captured.out == "You are late\n"
+    assert captured.out == 'You are late\n'
