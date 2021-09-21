@@ -33,9 +33,9 @@ def test_cache_light():
 
 
 def test_cache_input():
-    with patch('builtins.input', return_value="1"):
+    with patch('builtins.input', return_value='1'):
         assert f() == '1'
     assert f() == '1'
     assert f() == '1'
-    with patch('builtins.input', return_value="2"):
+    with patch('builtins.input', return_value='2'):
         assert f() == '2'
