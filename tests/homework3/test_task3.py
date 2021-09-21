@@ -11,22 +11,22 @@ def test_Filter():
 def test_make_filter():
     sample_data = [
      {
-         "name": "Bill",
-         "last_name": "Gilbert",
-         "occupation": "was here",
-         "type": "person",
+         'name': 'Bill',
+         'last_name': 'Gilbert',
+         'occupation': 'was here',
+         'type': 'person',
      },
      {
-         "is_dead": True,
-         "kind": "parrot",
-         "type": "bird",
-         "name": "polly"
+         'is_dead': True,
+         'kind': 'parrot',
+         'type': 'bird',
+         'name': 'polly'
      },
      {
-         "is_dead": False,
-         "kind": "parrot",
-         "type": "bird",
-         "name": "pollytech"
+         'is_dead': False,
+         'kind': 'parrot',
+         'type': 'bird',
+         'name': 'pollytech'
      }
     ]
     assert make_filter(name='polly', type='bird').apply(sample_data) == [
