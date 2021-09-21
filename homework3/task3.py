@@ -21,7 +21,7 @@ class Filter:
         ]
 
 
-def value_by_key_in_dict(val: Dict[Any], key: Any, value: Any) -> bool:
+def value_by_key_in_dict(val: Dict, key: Any, value: Any) -> bool:
     """
     return True if value by key in dict
     """
