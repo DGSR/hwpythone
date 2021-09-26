@@ -1,6 +1,5 @@
 from homework7.hw3 import tic_tac_toe_checker
 
-
 board1 = [['-', '-', 'o'],
           ['-', 'x', 'o'],
           ['x', 'o', 'x']]
