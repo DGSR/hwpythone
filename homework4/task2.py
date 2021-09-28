@@ -13,5 +13,5 @@ def count_dots_on_i(url: str, char_search: str = CHAR_CONSTANT) -> int:
     try:
         res = requests.get(url).content.decode(DEFAULT_ENCODING)
     except (ConnectionError, TimeoutError, RequestException, HTTPError):
-        raise ValueError('Unreachable {url})')
+        raise ValueError(f'Unreachable {url})')
     return res.count(char_search)
