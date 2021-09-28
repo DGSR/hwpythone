@@ -2,9 +2,7 @@ import functools
 
 
 def save_original_info(orig_func):
-    """
-    parameterized decorator, which saves info about initial function
-    """
+    """parameterized decorator, which saves info about initial function"""
     def wrapper(func):
         def substitute(*args, **kwargs):
             return func(*args, **kwargs)
