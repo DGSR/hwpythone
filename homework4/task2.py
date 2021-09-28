@@ -1,6 +1,7 @@
 import requests
 from requests.exceptions import RequestException
 from requests.models import HTTPError
+
 from constant.constants import CHAR_CONSTANT, DEFAULT_ENCODING
 
 
