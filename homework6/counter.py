@@ -24,13 +24,10 @@ def instances_counter(cls):
     adds 2 methods get_created_instances and reset_instances_counter
     to get number and to reset the counter
     """
-    init = cls.__init__
-
     def __init__(self, *args, **kwargs):
         __init__.calls += 1
-        init(self, *args, **kwargs)
+        super(cls, self).__init__(*args, **kwargs)
     __init__.calls = 0
-
     cls.__init__ = __init__
     cls.get_created_instances = partial(get_calls_counter, __init__)
     cls.reset_instances_counter = partial(reset_calls_counter, __init__)

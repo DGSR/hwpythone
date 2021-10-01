@@ -28,34 +28,44 @@ class HomeworkResult:
     solution, author and created attributes
     """
     def __init__(self, homework: Homework, solution: str, student: 'Student'):
+        self._is_valid(homework)
+        self.author = student
+        self.created = datetime.now()
+        self.homework = homework
+        self.solution = solution
+
+    def _is_valid(self, homework: Homework) -> None:
+        """
+        check if homework is valid Homework object and deadline is not due
+        """
         if not isinstance(homework, Homework):
             raise ValueError("You gave a not Homework object")
 
-        self.homework = homework
-        self.solution = solution
-        self.author = student
-        self.created = datetime.now()
+        if not homework.is_active():
+            raise DeadlineError('You are late')
 
 
-class Student:
+class Person:
     """
-    class represents student with last and first names
+    class represents person with last name and first name
     """
     def __init__(self, first_name: str, last_name: str):
         self.first_name = first_name
         self.last_name = last_name
 
+
+class Student(Person):
+    """
+    class represents student with last and first names
+    """
     def do_homework(self, homework: Homework, solution: str) -> HomeworkResult:
         """
-        return Homework object if deadline has not passed yet else raise error
+        return HomeworkResult object based on homework
         """
-        if not homework.is_active():
-            raise DeadlineError('You are late')
-
         return HomeworkResult(homework, solution, self)
 
 
-class Teacher(Student):
+class Teacher(Person):
     """
     class represents teacher with last and first names
     """
@@ -79,13 +89,13 @@ class Teacher(Student):
         """
         return Homework(text, deadline)
 
-    @staticmethod
-    def reset_results(homework: Homework = None) -> None:
+    @classmethod
+    def reset_results(cls, homework: Homework = None) -> None:
         """
         clear all results in homework_done by key homework
         if nothing passed clear homework_done
         """
-        if not homework:
-            Teacher.homework_done = defaultdict(set)
-
-        Teacher.homework_done.clear()
+        if homework:
+            cls.homework_done[homework].clear()
+        else:
+            cls.homework_done = defaultdict(list)

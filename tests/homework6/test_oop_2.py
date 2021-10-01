@@ -30,7 +30,6 @@ def test_combined():
     opp_teacher.check_homework(result_2)
     assert opp_teacher.check_homework(result_3) is False
 
-    print(Teacher.homework_done[oop_hw])
     Teacher.reset_results()
     assert Teacher.homework_done == defaultdict(set)
 
