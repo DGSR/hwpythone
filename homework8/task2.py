@@ -1,5 +1,8 @@
 import contextlib
 import sqlite3
+from constant.sql_queries import (SELECT_COUNT_FROM_PARAMETERIZED,
+                                  SELECT_FROM_PARAMETERIZED,
+                                  SELECT_FROM_WHERE_PARAMETERIZED)
 
 
 def TableDataCollection(cls):
@@ -55,7 +58,8 @@ class TableData:
         """
         with db_connect(self.database_name) as conn:
             cursor = conn.cursor()
-            cursor.execute(f'SELECT COUNT(*) from {self.table_name}')
+            query = SELECT_COUNT_FROM_PARAMETERIZED % (self.table_name)
+            cursor.execute(query)
             return cursor.fetchone()[0]
 
     def get_row_by_name(self, name):
@@ -64,7 +68,7 @@ class TableData:
         """
         with db_connect(self.database_name) as conn:
             cursor = conn.cursor()
-            query = f'SELECT * from {self.table_name} WHERE name=:name LIMIT 1'
+            query = SELECT_FROM_WHERE_PARAMETERIZED % (self.table_name)
             cursor.execute(query, {'name': name})
             return cursor.fetchone()
 
@@ -74,7 +78,8 @@ class TableData:
         """
         with db_connect(self.database_name) as conn:
             cursor = conn.cursor()
-            for row in cursor.execute(f'SELECT * from {self.table_name}'):
+            query = SELECT_FROM_PARAMETERIZED % (self.table_name)
+            for row in cursor.execute(query):
                 if name in row:
                     return True
             return False
@@ -86,6 +91,7 @@ class TableData:
         with db_connect(self.database_name) as conn:
             conn.row_factory = sqlite3.Row
             cursor = conn.cursor()
-            cursor.execute(f'SELECT * from {self.table_name}')
+            query = SELECT_FROM_PARAMETERIZED % (self.table_name)
+            cursor.execute(query)
             while row := cursor.fetchone():
                 yield row
