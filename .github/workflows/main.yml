@@ -18,7 +18,7 @@ jobs:
           pip install flake8 isort pytest
           pip install -r requirements.txt
           ls -la
-          flake8 .
+          flake8 --exclude=*.txt
           isort --check .
           py.test tests
           py.test homework4 --doctest-modules
