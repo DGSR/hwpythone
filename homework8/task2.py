@@ -80,10 +80,12 @@ class TableData:
         with db_connect(self.database_name) as conn:
             cursor = conn.cursor()
             query = SELECT_FROM_PARAMETERIZED % (self.table_name)
+            result = False
             for row in cursor.execute(query):
                 if name in row:
-                    return True
-            return False
+                    result = True
+                    break
+            return result
 
     def iterator(self):
         """
