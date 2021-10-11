@@ -4,9 +4,8 @@ from pathlib import Path
 from typing import Callable, Optional
 
 
-def universal_file_counter(
-    dir_path: Path, file_extension: str, tokenizer: Optional[Callable] = None
-) -> int:
+def universal_file_counter(dir_path: Path, file_extension: str,
+                           tokenizer: Optional[Callable] = None) -> int:
     """
     return number of lines or tokens
      in given path for files with given extension
