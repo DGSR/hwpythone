@@ -1,5 +1,6 @@
 import contextlib
 import sqlite3
+
 from constant.sql_queries import (SELECT_COUNT_FROM_PARAMETERIZED,
                                   SELECT_FROM_PARAMETERIZED,
                                   SELECT_FROM_WHERE_PARAMETERIZED)
