@@ -60,6 +60,7 @@ class TableData:
         with db_connect(self.database_name) as conn:
             cursor = conn.cursor()
             query = SELECT_COUNT_FROM_PARAMETERIZED % (self.table_name)
+
             cursor.execute(query)
             return cursor.fetchone()[0]
 
@@ -70,6 +71,7 @@ class TableData:
         with db_connect(self.database_name) as conn:
             cursor = conn.cursor()
             query = SELECT_FROM_WHERE_PARAMETERIZED % (self.table_name)
+
             cursor.execute(query, {'name': name})
             return cursor.fetchone()
 
@@ -81,6 +83,7 @@ class TableData:
             cursor = conn.cursor()
             query = SELECT_FROM_PARAMETERIZED % (self.table_name)
             result = False
+
             for row in cursor.execute(query):
                 if name in row:
                     result = True
@@ -95,6 +98,7 @@ class TableData:
             conn.row_factory = sqlite3.Row
             cursor = conn.cursor()
             query = SELECT_FROM_PARAMETERIZED % (self.table_name)
+
             cursor.execute(query)
             while row := cursor.fetchone():
                 yield row
