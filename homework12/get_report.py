@@ -1,6 +1,7 @@
-from sqlalchemy import create_engine, MetaData, select
 import csv
 from typing import List
+
+from sqlalchemy import MetaData, create_engine, select
 
 
 def get_done_homework(db_uri: str) -> List:
