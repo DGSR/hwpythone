@@ -1,5 +1,7 @@
 from unittest.mock import MagicMock, Mock, patch
 
+import lxml  # noqa: F401
+
 from homework10.stonks import Stonks
 
 
